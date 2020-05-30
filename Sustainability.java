@@ -30,4 +30,8 @@ public class Sustainability {
 		sustainability = (data[2][0] * 0.25) + (data[2][1] * 0.25) + (data[2][2] * 0.40) + (data[2][3] * 0.10);
 		return sustainability;
 	}
+	
+	public double getSustainability() {
+		return sustainability;
+	}
 }
