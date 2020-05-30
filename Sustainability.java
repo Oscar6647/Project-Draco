@@ -24,13 +24,13 @@ public class Sustainability {
 	}
 
 	private double calculateSustainability(double[][] data) {
-		for (int i = 0; i < data.length - 1; i++) {
+		for (int i = 0; i < data[0].length; i++) {
 			data[2][i] = data[0][i] - (data[1][i] * remainingMissionDays);
 		}
 		sustainability = (data[2][0] * 0.25) + (data[2][1] * 0.25) + (data[2][2] * 0.40) + (data[2][3] * 0.10);
-		return sustainability;
+		return sustainability * 100;
 	}
-	
+
 	public double getSustainability() {
 		return sustainability;
 	}
