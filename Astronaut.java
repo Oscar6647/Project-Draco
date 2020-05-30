@@ -21,7 +21,7 @@ public class Astronaut {
 		this.name=name;
 		this.mentalHealth=mentalHealth;
 		this.physicalHealth=physicalHealth;
-		this.health=(mentalHealth+physicalHealth)/2;
+		this.health=((mentalHealth)/2)+(physicalHealth)/2);
 		this.feeling= feeling;
 	}
 	
