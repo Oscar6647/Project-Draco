@@ -25,7 +25,7 @@ public class Astronaut {
 		this.feeling= feeling;
 	}
 	
-	public double calculatephysicalHealth(int exercise, int nutrition, int sleep, int hydratio, int feeling, int wounded) {
+	public double calculatephysicalHealth(int exercise, int nutrition, int sleep, int hydration, int feeling, int wounded) {
 		physicalHealth=exercise*.15+nutrition*.20+sleep*.15+hydration*.20+feeling*10+wounded*5;
 		return physicalHealth;
 	}
