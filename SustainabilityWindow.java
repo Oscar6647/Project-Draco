@@ -1,7 +1,9 @@
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import java.awt.Font;
@@ -31,10 +33,10 @@ public class SustainabilityWindow {
 	private JButton btnNewButton;
 	private JLabel lblSustainability;
 	private JLabel lblRemainingMissionDays;
-	private double foodP;
-	private double waterP;
-	private double oxygenP;
-	private double fuelP;
+	static double foodP;
+	static double waterP;
+	static double oxygenP;
+	static double fuelP;
 	private double foodD;
 	private double waterD;
 	private double oxygenD;
@@ -63,6 +65,10 @@ public class SustainabilityWindow {
 		pane.getContentPane().setLayout(null);
 
 		frame = new JPanel();
+		frame.setLayout(new GridLayout(4,4));
+
+		JLabel spaceLabel = new JLabel();
+		frame.add(spaceLabel);
 		
 		JLabel lblNewLabel = new JLabel("Food");
 		lblNewLabel.setBounds(266, 0, 31, 16);
@@ -138,15 +144,22 @@ public class SustainabilityWindow {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(final ActionEvent e) {
 				btnSustainabilityPressed();
+				JOptionPane.showMessageDialog(null, Sustainability.foodDLeft + " days of re left" + "\n"+
+													Sustainability.waterDLeft + " days of water are left" + "\n"+
+													Sustainability.oxygenDLeft + " days of oxygen left" + "\n" +
+													Sustainability.fuelDLeft + " days of fuel left" + "\n");
 			}
 		});
 		btnNewButton.setBounds(6, 113, 191, 29);
 		frame.add(btnNewButton);
 		
-		lblSustainability = new JLabel("Sustainability %:");
+		lblSustainability = new JLabel("");
 		lblSustainability.setBounds(231, 119, 102, 16);
 		frame.add(lblSustainability);
 		
+		JLabel space = new JLabel();
+		frame.add(space);
+
 		lblRemainingMissionDays = new JLabel("Remaining Mission Days:");
 		lblRemainingMissionDays.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		lblRemainingMissionDays.setBounds(532, 118, 161, 16);
@@ -156,6 +169,7 @@ public class SustainabilityWindow {
 		remainingDays.setColumns(10);
 		remainingDays.setBounds(698, 113, 166, 26);
 		frame.add(remainingDays);
+
 	}
 	
 	private void btnSustainabilityPressed() {
@@ -169,7 +183,8 @@ public class SustainabilityWindow {
 		fuelD = Double.valueOf(fuelDaily.getText());
 		remainingD = Integer.valueOf(remainingDays.getText());
 		
-		final Sustainability mission = new Sustainability(foodP, waterP, oxygenP, fuelP, foodD, waterD, oxygenD, fuelD, remainingD);
-		lblSustainability.setText(String.valueOf(mission.getSustainability()));
+		Sustainability mission = new Sustainability(foodP, waterP, oxygenP, fuelP, foodD, waterD, oxygenD, fuelD, remainingD);
+
+
 	}
 }
