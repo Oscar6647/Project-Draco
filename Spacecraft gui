@@ -1,0 +1,188 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JProgressBar;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Spacecraft {
+
+	private JFrame frmSpacecraft;
+	static JProgressBar OxygenBar; 
+	static JProgressBar WaterBar;
+	static JProgressBar EnergyBar;
+	static JProgressBar FuelBar;
+	static JProgressBar progressBar;
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Spacecraft window = new Spacecraft();
+					window.frmSpacecraft.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	public Spacecraft() {
+		initialize();
+
+	}
+	private void initialize() {
+		frmSpacecraft = new JFrame();
+		frmSpacecraft.setTitle("Spacecraft");
+		frmSpacecraft.setBounds(100, 100, 555, 229);
+		frmSpacecraft.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmSpacecraft.getContentPane().setLayout(null);
+		int max = 100;
+		int min = 0;
+
+		OxygenBar = new JProgressBar(min,max);
+		OxygenBar.setValue(min);
+		OxygenBar.setStringPainted(true);
+		OxygenBar.setBounds(126, 11, 146, 14);
+		frmSpacecraft.getContentPane().add(OxygenBar);
+		JLabel lblOxygen = new JLabel("Oxygen Used");
+		lblOxygen.setBounds(10, 11, 102, 14);
+		frmSpacecraft.getContentPane().add(lblOxygen);
+		
+		JLabel lblEnergy = new JLabel("Energy Used");
+		
+		lblEnergy.setBounds(10, 36, 102, 14);
+		frmSpacecraft.getContentPane().add(lblEnergy);
+		
+		EnergyBar = new JProgressBar(min,max);
+		EnergyBar = new JProgressBar(min,max);
+		EnergyBar.setValue(min);
+		EnergyBar.setStringPainted(true);
+		EnergyBar.setBounds(126, 36, 146, 14);
+		frmSpacecraft.getContentPane().add(EnergyBar);
+		
+		JLabel lblFuel = new JLabel("Fuel Used");
+		lblFuel.setBounds(10, 61, 102, 14);
+		frmSpacecraft.getContentPane().add(lblFuel);
+		
+		FuelBar= new JProgressBar(min,max);
+		FuelBar = new JProgressBar(min,max);
+		FuelBar.setValue(min);
+		FuelBar.setStringPainted(true);
+		FuelBar.setBounds(126, 61, 146, 14);
+		frmSpacecraft.getContentPane().add(FuelBar);
+		
+		WaterBar = new JProgressBar(min,max);
+		
+		JButton btnMonitorSpacecraftStatus = new JButton("Monitor Spacecraft Status");
+		btnMonitorSpacecraftStatus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//display info from data[]spacecraft
+			}
+		});
+		btnMonitorSpacecraftStatus.setBounds(10, 94, 190, 23);
+		frmSpacecraft.getContentPane().add(btnMonitorSpacecraftStatus);
+		
+		JButton btnRecycleOxygen = new JButton("Recycle Oxygen");
+		btnRecycleOxygen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//if pressed 13 times must open popout, later explain
+			}
+		});
+		btnRecycleOxygen.setBounds(10, 128, 190, 23);
+		frmSpacecraft.getContentPane().add(btnRecycleOxygen);
+		
+		JButton btnTliBurn = new JButton("TLI BURN ");
+		btnTliBurn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//should show slowly not inmediatly
+				TLIBURN();
+		    } 
+		});
+		btnTliBurn.setBounds(10, 157, 190, 23);
+		frmSpacecraft.getContentPane().add(btnTliBurn);
+		
+		JButton btnNewButton = new JButton("Lunar Descent");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//should show slowly not inmediatly
+				LunarDescent();
+			}
+		});
+		btnNewButton.setBounds(210, 157, 190, 23);
+		frmSpacecraft.getContentPane().add(btnNewButton);
+		
+		JButton btnSpacecraftPosition = new JButton("Spacecraft Position");
+		btnSpacecraftPosition.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//display info from method on route if pressed 4 times must show info from lunardescent
+			}
+		});
+		btnSpacecraftPosition.setBounds(210, 92, 190, 26);
+		frmSpacecraft.getContentPane().add(btnSpacecraftPosition);
+		
+		JButton btnAbort = new JButton("Abort");
+		btnAbort.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//popout mission aborted must return back to homescreen
+			}
+		});
+		btnAbort.setBounds(210, 128, 190, 26);
+		frmSpacecraft.getContentPane().add(btnAbort);
+		
+		JButton btnNewButton_1 = new JButton("Refuel Water");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//when pressed it must reset progress, also waterbar must show alert when at 80% used
+				
+			}
+		});
+		btnNewButton_1.setBounds(410, 94, 119, 23);
+		frmSpacecraft.getContentPane().add(btnNewButton_1);
+		
+		JLabel lblWaterUsed = new JLabel("Water Used");
+		lblWaterUsed.setBounds(282, 9, 102, 14);
+		frmSpacecraft.getContentPane().add(lblWaterUsed);
+		
+		progressBar= new JProgressBar(min,max);
+		progressBar = new JProgressBar(min,max);
+		progressBar.setValue(min);
+		progressBar.setStringPainted(true);
+		progressBar.setBounds(349, 9, 146, 14);
+		frmSpacecraft.getContentPane().add(progressBar);
+		
+	}
+	public void TLIBURN() {
+		int i = 0; 
+        try { 
+            while (i <= 50) { 
+                // fill the menu bar 
+                FuelBar.setValue(i + 10); 
+  
+                // delay the thread 
+                Thread.sleep(1000); 
+                i += 20; 
+            } 
+        } 
+        catch (Exception e) { 
+        } 
+	}
+	public void LunarDescent() {
+		int i = 50; 
+        try { 
+            while (i <= 100) { 
+                // fill the menu bar 
+                FuelBar.setValue(i + 10); 
+  
+                // delay the thread 
+                Thread.sleep(1000); 
+                i += 20; 
+            } 
+        } 
+        catch (Exception e) { 
+        } 
+	}
+}
