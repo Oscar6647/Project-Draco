@@ -24,6 +24,7 @@ public class runner {
 
     final guiAstronauta astronauta = new guiAstronauta();
     final SustainabilityWindow sus = new SustainabilityWindow();
+    final Spacecraft space = new Spacecraft();
 
     public runner(){
 
@@ -55,18 +56,14 @@ public class runner {
         tab.addTab("astronauta", guiAstronauta.dunno);
         tab.add("susteinability", SustainabilityWindow.frame);
         tab.add("final calculation", panel2);
+        tab.add("Spacecraft", Spacecraft.frmSpacecraft);
 
         panel1.add(tab);
         panel1.setVisible(true);
-        //panel1.setSize(500,200);
 
         main.add(panel1);
         main.setVisible(true);
-        main.setSize(1050,200);
-
-       
-
-
+        main.setSize(1070,300);
 
     }
 
