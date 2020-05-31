@@ -23,11 +23,18 @@ public class Sustainability {
 		calculateSustainability(data);
 	}
 
-	private double calculateSustainability(double[][] data) {
+	private double calculateShipSustainability(double[][] data) {
 		for (int i = 0; i < data[0].length; i++) {
 			data[2][i] = data[0][i] - (data[1][i] * remainingMissionDays);
 		}
 		sustainability = (data[2][0] * 0.25) + (data[2][1] * 0.25) + (data[2][2] * 0.40) + (data[2][3] * 0.10);
+		return sustainability * 100;
+	}
+	private double calculateBaseSustainability(double[][] data) {
+		for (int i = 0; i < data[0].length-1; i++) {
+			data[2][i] = data[0][i] - (data[1][i] * remainingMissionDays);
+		}
+		sustainability = (data[2][0] * 0.30) + (data[2][1] * 0.30) + (data[2][2] * 0.40);
 		return sustainability * 100;
 	}
 
