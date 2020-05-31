@@ -1,0 +1,37 @@
+
+
+import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
+
+import java.awt.Component;
+import java.awt.Panel;
+
+public class runner {
+
+    JTabbedPane tab;
+    JFrame main;
+    Panel panel1, panel2;       
+    final guiAstronauta astronauta = new guiAstronauta();
+    final SustainabilityWindow sus = new SustainabilityWindow();
+
+    public runner(){
+
+        main = new JFrame();
+
+        tab = new JTabbedPane();
+
+        tab.addTab("astronauta", guiAstronauta.dunno);
+        tab.add("susteinability", SustainabilityWindow.frame);
+
+        main.add(tab);
+        main.setVisible(true);
+
+
+
+    }
+
+    public static void main(final String[] args) {
+     runner runner = new runner();
+
+    }
+}
