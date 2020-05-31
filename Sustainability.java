@@ -1,4 +1,7 @@
 public class Sustainability {
+	/* With information of the ship or spacial base as parameter this program operates and determines wether if the base
+	is sutainable for the correct finishing of the mission on time or if they will have some sort of problem with resources 
+	during the mission. The program calculates how much time left they have to work with their resources while the base is still habitable*/
 	private static int remainingMissionDays;
 	static double sustainabilityShip, sustainabilityBase;
 	public static double foodP;
