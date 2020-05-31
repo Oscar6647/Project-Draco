@@ -144,9 +144,7 @@ public class guiAstronauta {
 
 
         getDunno().setVisible(true);
-        main.add(getDunno());
-        main.setVisible(true);
-        main.setSize(1000, 1000);
+
 
     }
 
