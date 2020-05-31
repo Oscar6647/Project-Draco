@@ -1,16 +1,27 @@
 
-
+import javax.swing.AbstractAction;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import java.awt.Component;
 import java.awt.Panel;
+import java.awt.event.ActionEvent;
 
 public class runner {
 
     JTabbedPane tab;
     JFrame main;
-    Panel panel1, panel2;       
+    JPanel panel1, panel2;
+
+    JButton calcular;
+
+    String descicionS = "";
+    String DescicionB = "";
+
+
     final guiAstronauta astronauta = new guiAstronauta();
     final SustainabilityWindow sus = new SustainabilityWindow();
 
@@ -18,14 +29,65 @@ public class runner {
 
         main = new JFrame();
 
+        panel1 = new JPanel();
+        panel2 = new JPanel();
+
+        calcular = new JButton(new AbstractAction("calculate"){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+                check();
+				JOptionPane.showMessageDialog(null, descicionS + "and" + DescicionB);
+				
+			}
+            
+        });
+
+        panel2.add(calcular);
+
         tab = new JTabbedPane();
 
         tab.addTab("astronauta", guiAstronauta.dunno);
         tab.add("susteinability", SustainabilityWindow.frame);
+        tab.add("final calculation", panel2);
 
-        main.add(tab);
+        panel1.add(tab);
+        panel1.setVisible(true);
+        //panel1.setSize(500,200);
+
+        main.add(panel1);
         main.setVisible(true);
+        main.setSize(1050,200);
 
+       
+
+
+
+    }
+
+    public void check(){
+        guiAstronauta.conversor();
+        Sustainability.calculateBaseSustainability(SustainabilityWindow.foodP, SustainabilityWindow.waterP, SustainabilityWindow.oxygenP, SustainabilityWindow.fuelP);
+
+
+        double astronauta = Astronaut.health;
+        double sustento = Sustainability.sustainabilityBase;
+      
+        if (astronauta >= 80){
+            descicionS = "the astronaut is healty";
+        } else if (80 > astronauta && astronauta > 60){
+            descicionS = "the astronaut is in good physical and mental condition but culd be better";
+        } else if (astronauta <= 60){
+            descicionS = "the astronaut is in bad condition";
+        }
+
+        if (sustento >= 80){
+            DescicionB = "the base is well supllied";
+        } else if (80 > sustento && sustento > 60){
+            DescicionB = "The base has a medium level of supplies";
+        } else if (sustento <= 60){
+            DescicionB = "the base is in critical condition of supplies";
+        }
 
 
     }
