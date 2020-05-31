@@ -43,14 +43,14 @@ public class guiAstronauta {
 
     private GridLayout layout;
 
-    private static int exerciseI;
-    private static int nutritionI;
-    private static int hidratationI;
-    private static int sleepI;
-    private static int woundsI;
-    private static int interactionI;
-    private static int feelingI;
-    private static int hobbyI;
+    static int exerciseI;
+    static int nutritionI;
+    static int hidratationI;
+    static int sleepI;
+    static int woundsI;
+    static int interactionI;
+    static int feelingI;
+    static int hobbyI;
     private static int dayMissionI;
 
     public guiAstronauta() {
@@ -75,15 +75,16 @@ public class guiAstronauta {
         general4 = new Panel();
         general4.setLayout(new GridLayout(1, 4));
 
-        ejercicio = new JLabel("% ejercicio");
-        nutricion = new JLabel("% nutricion");
-        hidratacion = new JLabel("% hidratacion");
-        sueño = new JLabel("% sueño");
-        heridas = new JLabel("% heridas");
-        interaccion = new JLabel("% interaccion");
-        sentimiento = new JLabel("¿como te sientes?");
-        pasatiempo = new JLabel("pasatiempo");
-        diasMision = new JLabel("Dias mision");
+        ejercicio = new JLabel("    % ejercicio");
+        nutricion = new JLabel("    % nutricion");
+        hidratacion = new JLabel("  % hidratacion");
+        sueño = new JLabel("    % sueño");
+        heridas = new JLabel("    % heridas");
+        interaccion = new JLabel("  % interaccion");
+        sentimiento = new JLabel("  ¿como te sientes?");
+        pasatiempo = new JLabel("   pasatiempo");
+        diasMision = new JLabel("   Dias mision");
+        JLabel sppace = new JLabel();
 
         exercise = new JTextField();
         nutrition = new JTextField();
@@ -94,6 +95,7 @@ public class guiAstronauta {
         feeling = new JTextField();
         hobby = new JTextField();
         dayMission = new JTextField();
+        
 
         calcular = new JButton(new AbstractAction("add") {
 
@@ -127,6 +129,7 @@ public class guiAstronauta {
         general3.add(feeling, null);
         general3.add(hobby, null);
         general3.add(dayMission, null);
+        general3.add(sppace, null);
 
         general4.add(interaccion, null);
         general4.add(sentimiento, null);
@@ -138,9 +141,6 @@ public class guiAstronauta {
         getDunno().add(general2);
         getDunno().add(general3);
         getDunno().add(general4);
-
-
-        getDunno().setSize(300,300);
 
 
         getDunno().setVisible(true);
@@ -169,6 +169,7 @@ public class guiAstronauta {
         dayMissionI = Integer.valueOf(dayMission.getText());
 
         Astronaut astronaut = new Astronaut("holo", exerciseI, nutritionI, sleepI, hidratationI, feelingI, woundsI, interactionI, hobbyI);
+
 
     }
 
