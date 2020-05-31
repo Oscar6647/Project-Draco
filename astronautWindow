@@ -170,9 +170,6 @@ public class guiAstronauta {
 
         Astronaut astronaut = new Astronaut("holo", exerciseI, nutritionI, sleepI, hidratationI, feelingI, woundsI, interactionI, hobbyI);
 
-        System.out.println(Astronaut.physicalHealth);
-        System.out.println(Astronaut.mentalHealth);
-
     }
 
 }
