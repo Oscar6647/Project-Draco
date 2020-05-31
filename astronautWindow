@@ -1,6 +1,7 @@
+
+import java.awt.GridLayout;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
-import java.awt.GridLayout;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -22,7 +23,7 @@ public class guiAstronauta {
     private JLabel pasatiempo;
     private JLabel diasMision;
 
-    private JFrame main;
+    static JFrame main;
 
     private static JTextField exercise;
     private static JTextField nutrition;
@@ -36,7 +37,7 @@ public class guiAstronauta {
 
     private JButton calcular;
 
-    private JPanel dunno;
+    static JPanel dunno;
 
     private Panel general1, general2, general3, general4;
 
@@ -57,7 +58,7 @@ public class guiAstronauta {
         main = new JFrame();
         main.setLayout(null);
 
-        dunno = new JPanel();
+        setDunno(new JPanel());
         layout = new GridLayout();
         layout.setColumns(2);
         layout.setRows(3);
@@ -99,7 +100,7 @@ public class guiAstronauta {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 conversor();
-                JOptionPane.showMessageDialog(null, Astronaut.result);
+                JOptionPane.showMessageDialog(null, Astronaut.health);
             }
 
         
@@ -108,7 +109,7 @@ public class guiAstronauta {
 
 
 
-        dunno.setLayout(new GridLayout(4, 1, 6, 6));
+        getDunno().setLayout(new GridLayout(4, 1, 6, 6));
 
         general1.add(exercise, null);
         general1.add(nutrition, null);
@@ -133,23 +134,31 @@ public class guiAstronauta {
         general4.add(diasMision, null);
         general4.add(calcular,null);
 
-        dunno.add(general1);
-        dunno.add(general2);
-        dunno.add(general3);
-        dunno.add(general4);
+        getDunno().add(general1);
+        getDunno().add(general2);
+        getDunno().add(general3);
+        getDunno().add(general4);
 
 
-        dunno.setSize(300,300);
+        getDunno().setSize(300,300);
 
 
-        dunno.setVisible(true);
-        main.add(dunno);
+        getDunno().setVisible(true);
+        main.add(getDunno());
         main.setVisible(true);
         main.setSize(1000, 1000);
 
     }
 
-    public static void conversor() {
+    public static JPanel getDunno() {
+		return dunno;
+	}
+
+	public void setDunno(JPanel dunno) {
+		this.dunno = dunno;
+	}
+
+	public static void conversor() {
 
         exerciseI = Integer.valueOf(exercise.getText());
         nutritionI = Integer.valueOf(nutrition.getText());
@@ -162,6 +171,9 @@ public class guiAstronauta {
         dayMissionI = Integer.valueOf(dayMission.getText());
 
         Astronaut astronaut = new Astronaut("holo", exerciseI, nutritionI, sleepI, hidratationI, feelingI, woundsI, interactionI, hobbyI);
+
+        System.out.println(Astronaut.physicalHealth);
+        System.out.println(Astronaut.mentalHealth);
 
     }
 
