@@ -1,6 +1,6 @@
-package Draco;
 
 public class Astronaut {
+	protected static final String resultado = null;
 	String name;
 	int exercise;
 	int nutrition;
@@ -12,16 +12,17 @@ public class Astronaut {
 	int feeling;
 	int hobby;
 	int daysOnMission;
-	double mentalHealth;
-	double physicalHealth;
+	static double mentalHealth;
+	static double physicalHealth;
 	double mentalHealthCalc;
 	double physicalHealthCalc;
-	double health;
+     static  double health;
+    static double result;
 	
 	public Astronaut(String name, int exercise, int nutrition, int sleep, int hydration, int feeling, int wounded, int interaction, int hobby) {
 		this.name=name;
-		this.physicalHealth=calculatePhysicalHealth(exercise, nutrition, sleep, hydration, feeling, wounded)*10;
-		this.mentalHealth=calculateMentalHealth(interaction, feeling, hobby, calculatePhysicalHealth(exercise, nutrition, sleep, hydration, feeling, wounded))*10;
+		this.physicalHealth=calculatePhysicalHealth(exercise, nutrition, sleep, hydration, feeling, wounded);
+		this.mentalHealth=calculateMentalHealth(interaction, feeling, hobby, calculatePhysicalHealth(exercise, nutrition, sleep, hydration, feeling, wounded),sleep);
 		this.health=(this.mentalHealth+this.physicalHealth)/2;
 		this.feeling= feeling;
 	}
@@ -31,13 +32,11 @@ public class Astronaut {
 		return physicalHealthCalc;
 	}
 	
-	public double calculateMentalHealth(int interaction, int feeling, int hobby, double physicalHealth){
+	public double calculateMentalHealth(int interaction, int feeling, int hobby, double physicalHealth, int sleep){
 		mentalHealthCalc= interaction*.25+feeling*.25+hobby*.25+physicalHealth*.15+ sleep*.10;
 		return mentalHealthCalc;
-	}
-	
-	 public  void resultado(Double physicalHealth, Double mentalHealt) {
-        Astronaut.result = (physicalHealth * 0.50) + (mentalHealth * 0.50);
     }
+    
+
 
 }
