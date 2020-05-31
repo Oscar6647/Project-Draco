@@ -157,9 +157,6 @@ public class SustainabilityWindow {
 		remainingDays.setColumns(10);
 		remainingDays.setBounds(698, 113, 166, 26);
 		frame.add(remainingDays);
-
-		pane.add(frame);
-		pane.setVisible(true);
 	}
 	
 	private void btnSustainabilityPressed() {
