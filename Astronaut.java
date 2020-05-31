@@ -35,5 +35,9 @@ public class Astronaut {
 		mentalHealthCalc= interaction*.25+feeling*.25+hobby*.25+physicalHealth*.15+ sleep*.10;
 		return mentalHealthCalc;
 	}
+	
+	 public  void resultado(Double physicalHealth, Double mentalHealt) {
+        Astronaut.result = (physicalHealth * 0.50) + (mentalHealth * 0.50);
+    }
 
 }
