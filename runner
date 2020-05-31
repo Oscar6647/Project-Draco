@@ -36,12 +36,17 @@ public class runner {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+                try{
                 check();
-				JOptionPane.showMessageDialog(null, descicionS + "and" + DescicionB);
+                JOptionPane.showMessageDialog(null, descicionS + " and " + DescicionB);}
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "there are unfilled boxes");
+                }
+                }
 				
 			}
             
-        });
+        );
 
         panel2.add(calcular);
 
