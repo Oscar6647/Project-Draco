@@ -1,5 +1,9 @@
 
 public class Astronaut {
+	 /*This class receives parameters which are given by the astronaut in order to understand how they are 
+	 feelling or getting to know if they need medical atention.
+	 
+	 Given all of this information the program calculates how healthy the astonaut is physically and mentally */
 	protected static final String resultado = null;
 	String name;
 	int exercise;
