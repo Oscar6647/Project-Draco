@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
-public class EVASUIT {
+public class EVASUITGUI {
 
     static JPanel frmEvaSuit;
     Panel panel1, panel2, panel3;
@@ -30,7 +30,7 @@ public class EVASUIT {
 	/**
 	 * Create the application.
 	 */
-	public EVASUIT() {
+	public EVASUITGUI() {
 		initialize();
 	}
 
