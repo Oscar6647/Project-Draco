@@ -1,3 +1,4 @@
+package Draco:
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -53,7 +54,7 @@ public class EVASUIT {
 		int min = 0;
 
 		OxygenBar = new JProgressBar(min,max);
-		OxygenBar.setValue(min);
+		OxygenBar.setValue(EVASuitControllers.getDataSuit(1));
 		OxygenBar.setStringPainted(true);
 		OxygenBar.setBounds(126, 11, 146, 14);
 		frmEvaSuit.getContentPane().add(OxygenBar);
@@ -68,7 +69,7 @@ public class EVASUIT {
 		
 		EnergyBar = new JProgressBar(min,max);
 		EnergyBar = new JProgressBar(min,max);
-		EnergyBar.setValue(min);
+		EnergyBar.setValue(EVASuitControllers.getDataSuit(2));
 		EnergyBar.setStringPainted(true);
 		EnergyBar.setBounds(126, 36, 146, 14);
 		frmEvaSuit.getContentPane().add(EnergyBar);
@@ -76,6 +77,7 @@ public class EVASUIT {
 		FuelBar= new JProgressBar(min,max);
 		
 		WaterBar = new JProgressBar(min,max);
+		WaterBar.setValue(EVASuitControllers.getDataSuit(3));
 		
 		JButton btnMonitorSpacecraftStatus = new JButton("Monitor EVA Suit Status");
 		btnMonitorSpacecraftStatus.addActionListener(new ActionListener() {
@@ -111,7 +113,7 @@ public class EVASUIT {
 		btnEvaSuitLeak.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//if pressed display message: suit optimal  no leaks reported
-				//on 30th pressed display message: small suit leak detected, comence safe procedure 
+				//on 30th pressed display message: small suit leak detected, comence safety procedure 
 			}
 		});
 		btnEvaSuitLeak.setBounds(210, 94, 190, 23);
