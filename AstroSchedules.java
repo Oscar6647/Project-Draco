@@ -67,7 +67,7 @@ public class AstroSchedules {
 		frame.getContentPane().add(btnStart);
 		
 		JTextPane textPane = new JTextPane();
-		//should display schedule
+		//displays schedule
 		textPane.setToolTipText("");
 		textPane.setBounds(20, 70, 475, 231);
 		frame.getContentPane().add(textPane);
