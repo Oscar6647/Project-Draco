@@ -1,7 +1,8 @@
-package Draco;
-
 import java.awt.Button;
 import java.awt.EventQueue;
+import java.awt.GridLayout;
+import java.awt.Panel;
+import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
@@ -17,23 +18,13 @@ import javax.swing.JTextPane;
 public class AstroSchedules {
 
 	 JPanel frame;
-	 JProgressBar MissionDay;
+     JProgressBar MissionDay;
+     Panel panel1, panel2;
+     
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AstroSchedules window = new AstroSchedules();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -46,20 +37,25 @@ public class AstroSchedules {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frame = new JPanel();
 		frame.setBounds(100, 100, 521, 351);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getRootPane().setLayout(null);
-		
+        frame.setLayout(new GridLayout(3,1));
+        
+        panel1 = new Panel();
+        panel1.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 0));
+
+        panel2 = new Panel();
+        panel2.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 0));
+        
+        JLabel lblMissionDayProgress = new JLabel("Mission Day Progress");
+		lblMissionDayProgress.setBounds(10, 11, 146, 14);
+        panel1.add(lblMissionDayProgress);
+
 		MissionDay = new JProgressBar();
 		MissionDay.setValue(0);
 		MissionDay.setStringPainted(true);
 		MissionDay.setBounds(166, 11, 329, 14);
-		frame.getRootPane().add(MissionDay);
-		
-		JLabel lblMissionDayProgress = new JLabel("Mission Day Progress");
-		lblMissionDayProgress.setBounds(10, 11, 146, 14);
-		frame.getRootPane().add(lblMissionDayProgress);
+		panel1.add(MissionDay);
 		
 		JButton btnStart = new JButton("START");
 		btnStart.addActionListener(new ActionListener() {
@@ -69,23 +65,26 @@ public class AstroSchedules {
 			}
 		});
 		btnStart.setBounds(10, 36, 89, 23);
-		frame.getRootPane().add(btnStart);
-		
-		JTextPane textPane = new JTextPane();
-		//displays schedule
-		textPane.setToolTipText("");
-		textPane.setBounds(20, 70, 475, 231);
-		frame.getRootPane().add(textPane);
+		panel2.add(btnStart);
 		
 		JLabel lblOverallStayProgress = new JLabel("Overall Stay Progress");
 		lblOverallStayProgress.setBounds(109, 36, 146, 14);
-		frame.getRootPane().add(lblOverallStayProgress);
+		panel2.add(lblOverallStayProgress);
 		
 		JProgressBar Overrall = new JProgressBar();
 		Overrall.setValue(0);
-		Overrall.setStringPainted(true);
+        Overrall.setStringPainted(true);
 		Overrall.setBounds(227, 36, 268, 14);
-		frame.getRootPane().add(Overrall);
+        panel2.add(Overrall);
+
+        frame.add(panel1);
+        frame.add(panel2);
+        
+        JTextPane textPane = new JTextPane();
+		//displays schedule
+		textPane.setToolTipText("");
+		textPane.setBounds(20, 70, 475, 231);
+		frame.add(textPane);
 		
 		JButton btnNewButton = new JButton("Start EVA");
         btnNewButton.addActionListener(new ActionListener() {
@@ -98,4 +97,3 @@ public class AstroSchedules {
         
 	}
 }
-
