@@ -1,7 +1,7 @@
 package Draco;
 
 public class EVASuitControllers {
-	private double dataSuit[];
+	private static double dataSuit[];
 	private double oxygenSuit;
 	private double energySuit;
 	private double waterSuit;
@@ -17,4 +17,12 @@ public class EVASuitControllers {
 				"Water of the suit: " + dataSuit[2];
 		System.out.println(out);
 	}
+
+	public static int getDataSuit(int i) {
+		
+		return (int) dataSuit[i];
+	}
+
+	
+	
 }
