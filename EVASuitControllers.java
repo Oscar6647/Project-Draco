@@ -1,5 +1,3 @@
-package Draco;
-
 public class EVASuitControllers {
 	private static double dataSuit[];
 	private double oxygenSuit;
