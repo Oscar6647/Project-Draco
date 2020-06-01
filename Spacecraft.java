@@ -115,25 +115,16 @@ public class Spacecraft {
 		frmSpacecraft.add(btnTliBurn);
 		
 		JButton btnNewButton = new JButton(new AbstractAction("Lunar descendt") {
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				final SwingWorker worker = new SwingWorker() {
+				LunarDescent();
 
-					@Override
-					protected Object doInBackground() throws Exception {
-						LunarDescent();
-						return null;
-					}
-					};};});
-		
-		
-		//new JButton("Lunar Descent");
-		//btnNewButton.addActionListener(new ActionListener() {
-		//	public void actionPerformed(ActionEvent e) {
-				//should show slowly not inmediatly
-		////		LunarDescent();
-			//}
-		//});
+			}
+			
+		});
+
+
 		btnNewButton.setBounds(210, 157, 190, 23);
 		frmSpacecraft.add(btnNewButton);
 		
@@ -197,19 +188,22 @@ public class Spacecraft {
         } 
 	}
 	public void LunarDescent() {
-		int i = 50; 
-		int FuelBarStatus = 0;
-       try{
-		   FuelBar.setValue(50);
-            //do  { 
+		int i = 0; 
+        try { 
+            while (i <= 100) { 
                 // fill the menu bar 
-				//FuelBar.setValue(FuelBarStatus+10);
-			 // delay the thread 
-			// Thread.sleep(10); 
-			//FuelBarStatus =+ 20; }while (FuelBarStatus < 100);
-} catch(Exception e){
-	JOptionPane.showMessageDialog(null, "valio pito");
-}
-}
+                FuelBar.setValue(i); 
 
+                // delay the thread 
+               
+				i += 20; 
+				FuelBar.paintImmediately(0,0,FuelBar.getValue()*5,100);
+				FuelBar.setString(String.valueOf(FuelBar.getValue()));
+				Thread.sleep(1000); 
+}
+		} catch(Exception e){
+
+		}
+
+}
 }
