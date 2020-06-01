@@ -1,5 +1,3 @@
-package Draco;
-
 public class SpacecraftControllers {
 	private String controllerPosition;
 	private double[] dataSpacecraft;
