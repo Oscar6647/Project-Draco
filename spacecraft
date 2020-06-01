@@ -1,13 +1,14 @@
-package Draco;
-
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
+import javax.swing.SwingWorker;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
 
@@ -19,20 +20,13 @@ public class Spacecraft {
 	static JProgressBar EnergyBar;
 	static JProgressBar FuelBar;
 	static JProgressBar progressBar;
-	private SpacecraftControllers newControllers;
-	private JButton btnMonitorSpacecraftStatus;
-	private double[] newDataSpacecraft;
 	/**
 	 * Launch the application.
 	 */
-	
-	public static void main (String[] args) {
-		
-	}
 
 	public Spacecraft() {
-		newControllers = new SpacecraftControllers(" ", 100.0, 100.0, 100.0, 100.0);
 		initialize();
+
 	}
 	private void initialize() {
 		frmSpacecraft = new JPanel();
@@ -85,8 +79,7 @@ public class Spacecraft {
 		frmSpacecraft.add(lblFuel);
 		
 		FuelBar= new JProgressBar(min,max);
-		FuelBar = new JProgressBar(min,max);
-		FuelBar.setValue(min);
+		FuelBar.setValue(0);
 		FuelBar.setStringPainted(true);
 		FuelBar.setBounds(126, 61, 146, 14);
 		frmSpacecraft.add(FuelBar);
@@ -97,7 +90,6 @@ public class Spacecraft {
 		btnMonitorSpacecraftStatus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//display info from data[]spacecraft
-				displayDataSpacecraftArray();
 			}
 		});
 		btnMonitorSpacecraftStatus.setBounds(10, 94, 190, 23);
@@ -122,13 +114,26 @@ public class Spacecraft {
 		btnTliBurn.setBounds(10, 157, 190, 23);
 		frmSpacecraft.add(btnTliBurn);
 		
-		JButton btnNewButton = new JButton("Lunar Descent");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		JButton btnNewButton = new JButton(new AbstractAction("Lunar descendt") {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				final SwingWorker worker = new SwingWorker() {
+
+					@Override
+					protected Object doInBackground() throws Exception {
+						LunarDescent();
+						return null;
+					}
+					};};});
+		
+		
+		//new JButton("Lunar Descent");
+		//btnNewButton.addActionListener(new ActionListener() {
+		//	public void actionPerformed(ActionEvent e) {
 				//should show slowly not inmediatly
-				LunarDescent();
-			}
-		});
+		////		LunarDescent();
+			//}
+		//});
 		btnNewButton.setBounds(210, 157, 190, 23);
 		frmSpacecraft.add(btnNewButton);
 		
@@ -171,6 +176,10 @@ public class Spacecraft {
 		frmSpacecraft.add(btnNewButton_1);
 
 		frmSpacecraft.add(btnAbort);
+		
+		
+		
+		
 	}
 	public void TLIBURN() {
 		int i = 0; 
@@ -189,28 +198,18 @@ public class Spacecraft {
 	}
 	public void LunarDescent() {
 		int i = 50; 
-        try { 
-            while (i <= 100) { 
+		int FuelBarStatus = 0;
+       try{
+		   FuelBar.setValue(50);
+            //do  { 
                 // fill the menu bar 
-                FuelBar.setValue(i + 10); 
-  
-                // delay the thread 
-                Thread.sleep(1000); 
-                i += 20; 
-            } 
-        } 
-        catch (Exception e) { 
-        } 
-	}
-	
-	private void displayDataSpacecraftArray() {
-		String[] dataName = new String[] {"Oxygen", "Energy", "Fuel", "Water"};
-		double[] newDataSpacecraft = newControllers.getDataSpacecraft();
-		String out = "";
-		for (int i = 0 ; i < newDataSpacecraft.length ; i++) {
-			out += dataName[i] + ": " + String.valueOf(newDataSpacecraft[i]) + "\n";
-		}
-		JOptionPane.showMessageDialog(btnMonitorSpacecraftStatus, out);
-		
-	}
+				//FuelBar.setValue(FuelBarStatus+10);
+			 // delay the thread 
+			// Thread.sleep(10); 
+			//FuelBarStatus =+ 20; }while (FuelBarStatus < 100);
+} catch(Exception e){
+	JOptionPane.showMessageDialog(null, "valio pito");
+}
+}
+
 }
