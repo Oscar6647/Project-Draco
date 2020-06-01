@@ -1,5 +1,6 @@
 package Draco;
 
+
 public class Schedules {
 	private String wakeUp = "Wake Up";
 	private String breakfast = "Breakfast";
@@ -19,7 +20,7 @@ public class Schedules {
 	private String dinner = "Dinner";
 	private String preSleep = "Pre-Sleep";
 	private String sleep = "Sleep";
-	private String[] Schedule1;
+	private static String[] Schedule1;
 	private String[] Schedule2;
 	private String[] Schedule3;
 	private String[] Schedule4;
@@ -40,7 +41,7 @@ public class Schedules {
 		Schedule4 = new String[] {wakeUp, inbaseInspection, inventoryCheck, breakfast, freeTime, inbaseResearch, inbaseTestingHardware, launch, EVATestingHardware, EVAResearch, EVAExploration, dinner, cleanUp, preSleep, sleep};
 	}
 
-	public String[] getSchedule1() {
+	public static String[] getSchedule1() {
 		printStringArr(Schedule1);
 		return Schedule1;
 	}
@@ -59,10 +60,12 @@ public class Schedules {
 		printStringArr(Schedule4);
 		return Schedule4;
 	}
-	
-	private void printStringArr(String[] arr) {
+
+	static String printStringArr(String[] arr) {
+		String line="";
 		for (int i = 0 ; i < arr.length ; i++) {
-			System.out.println(arr[i]);
+			line= line +arr[i]+" ";
 		}
+		return line;
 	}
 }
