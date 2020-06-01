@@ -27,6 +27,7 @@ public class runner {
     final Spacecraft space = new Spacecraft();
     final AstroSchedules astro = new AstroSchedules();
     final EVASUIT eva = new EVASUIT();
+    final LunarBase base = new LunarBase();
 
     public runner(){
 
@@ -61,6 +62,7 @@ public class runner {
         tab.add("Spacecraft", Spacecraft.frmSpacecraft);
         tab.add("schedules", astro.frame);
         tab.add("EVA Suit", EVASUIT.frmEvaSuit);
+        tab.add("lunar base", LunarBase.frmLunarbase);
 
         panel1.add(tab);
         panel1.setVisible(true);
