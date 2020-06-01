@@ -1,6 +1,3 @@
-package Draco;
-
-
 public class Schedules {
 	private String wakeUp = "Wake Up";
 	private String breakfast = "Breakfast";
