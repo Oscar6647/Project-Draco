@@ -1,0 +1,121 @@
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
+
+public class EVASUIT {
+
+	JFrame frmEvaSuit;
+	static JProgressBar OxygenBar; 
+	static JProgressBar WaterBar;
+	static JProgressBar EnergyBar;
+	static JProgressBar FuelBar;
+	static JProgressBar progressBar;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					EVASUIT window = new EVASUIT();
+					window.frmEvaSuit.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public EVASUIT() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmEvaSuit = new JFrame();
+		frmEvaSuit.setTitle("EVA Suit");
+		frmEvaSuit.setBounds(100, 100, 433, 193);
+		frmEvaSuit.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmEvaSuit.getContentPane().setLayout(null);
+		int max = 100;
+		int min = 0;
+
+		OxygenBar = new JProgressBar(min,max);
+		OxygenBar.setValue(min);
+		OxygenBar.setStringPainted(true);
+		OxygenBar.setBounds(126, 11, 146, 14);
+		frmEvaSuit.getContentPane().add(OxygenBar);
+		JLabel lblOxygen = new JLabel("Oxygen Used");
+		lblOxygen.setBounds(10, 11, 102, 14);
+		frmEvaSuit.getContentPane().add(lblOxygen);
+		
+		JLabel lblEnergy = new JLabel("Energy Used");
+		
+		lblEnergy.setBounds(10, 36, 102, 14);
+		frmEvaSuit.getContentPane().add(lblEnergy);
+		
+		EnergyBar = new JProgressBar(min,max);
+		EnergyBar = new JProgressBar(min,max);
+		EnergyBar.setValue(min);
+		EnergyBar.setStringPainted(true);
+		EnergyBar.setBounds(126, 36, 146, 14);
+		frmEvaSuit.getContentPane().add(EnergyBar);
+		
+		FuelBar= new JProgressBar(min,max);
+		
+		WaterBar = new JProgressBar(min,max);
+		
+		JButton btnMonitorSpacecraftStatus = new JButton("Monitor EVA Suit Status");
+		btnMonitorSpacecraftStatus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//display info from data[]spacecraft
+			}
+		});
+		btnMonitorSpacecraftStatus.setBounds(10, 94, 190, 23);
+		frmEvaSuit.getContentPane().add(btnMonitorSpacecraftStatus);
+		
+		JButton btnRecycleOxygen = new JButton("EVA Completed");
+		btnRecycleOxygen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null,"EVA Finished, Refilling HabNode");
+				JOptionPane.showMessageDialog(null,"HabNode Refuled, EVA SUIT must be stored back to refuel it");
+			}
+		});
+		btnRecycleOxygen.setBounds(10, 128, 397, 23);
+		frmEvaSuit.getContentPane().add(btnRecycleOxygen);
+		
+		JLabel lblWaterUsed = new JLabel("Water Used");
+		lblWaterUsed.setBounds(10, 61, 102, 14);
+		frmEvaSuit.getContentPane().add(lblWaterUsed);
+		
+		progressBar= new JProgressBar(min,max);
+		progressBar = new JProgressBar(min,max);
+		progressBar.setValue(min);
+		progressBar.setStringPainted(true);
+		progressBar.setBounds(126, 61, 146, 14);
+		frmEvaSuit.getContentPane().add(progressBar);
+		
+		JButton btnEvaSuitLeak = new JButton("EVA Suit Leak check");
+		btnEvaSuitLeak.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//if pressed display message: suit optimal  no leaks reported
+				//on 30th pressed display message: small suit leak detected, comence safe procedure 
+			}
+		});
+		btnEvaSuitLeak.setBounds(210, 94, 190, 23);
+		frmEvaSuit.getContentPane().add(btnEvaSuitLeak);
+		
+	}
+}
