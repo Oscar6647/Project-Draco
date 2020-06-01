@@ -1,7 +1,10 @@
+package Draco;
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -16,13 +19,20 @@ public class Spacecraft {
 	static JProgressBar EnergyBar;
 	static JProgressBar FuelBar;
 	static JProgressBar progressBar;
+	private SpacecraftControllers newControllers;
+	private JButton btnMonitorSpacecraftStatus;
+	private double[] newDataSpacecraft;
 	/**
 	 * Launch the application.
 	 */
+	
+	public static void main (String[] args) {
+		
+	}
 
 	public Spacecraft() {
+		newControllers = new SpacecraftControllers(" ", 100.0, 100.0, 100.0, 100.0);
 		initialize();
-
 	}
 	private void initialize() {
 		frmSpacecraft = new JPanel();
@@ -87,6 +97,7 @@ public class Spacecraft {
 		btnMonitorSpacecraftStatus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//display info from data[]spacecraft
+				displayDataSpacecraftArray();
 			}
 		});
 		btnMonitorSpacecraftStatus.setBounds(10, 94, 190, 23);
@@ -160,10 +171,6 @@ public class Spacecraft {
 		frmSpacecraft.add(btnNewButton_1);
 
 		frmSpacecraft.add(btnAbort);
-		
-		
-		
-		
 	}
 	public void TLIBURN() {
 		int i = 0; 
@@ -194,5 +201,16 @@ public class Spacecraft {
         } 
         catch (Exception e) { 
         } 
+	}
+	
+	private void displayDataSpacecraftArray() {
+		String[] dataName = new String[] {"Oxygen", "Energy", "Fuel", "Water"};
+		double[] newDataSpacecraft = newControllers.getDataSpacecraft();
+		String out = "";
+		for (int i = 0 ; i < newDataSpacecraft.length ; i++) {
+			out += dataName[i] + ": " + String.valueOf(newDataSpacecraft[i]) + "\n";
+		}
+		JOptionPane.showMessageDialog(btnMonitorSpacecraftStatus, out);
+		
 	}
 }
